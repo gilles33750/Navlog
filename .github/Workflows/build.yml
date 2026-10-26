@@ -1,0 +1,35 @@
+
+name: Build NavLog Windows x86
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-windows:
+    runs-on: windows-2022
+
+    steps:
+      - name: Recuperer NavLog
+        uses: actions/checkout@v4
+
+      - name: Activer Visual Studio 2022 x86
+        uses: ilammy/msvc-dev-cmd@v1
+        with:
+          arch: x86
+
+      - name: Compiler NavLog
+        shell: cmd
+        run: call build-navlog.bat
+
+      - name: Recuperer le paquet compile
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: NavLog-Windows-x86
+          path: |
+            build/*.tar.gz
+            build/*.zip
+          if-no-files-found: error
