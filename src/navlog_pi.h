@@ -5,6 +5,7 @@
 #include "ocpn_plugin.h"
 #include <wx/string.h>
 #include <wx/bitmap.h>
+#include <wx/frame.h>
 
 class NavLogPi : public opencpn_plugin_118 {
 public:
@@ -38,6 +39,8 @@ public:
 
 private:
     wxBitmap m_panel_bitmap;
+    int m_toolbar_id = -1;
+    wxFrame* m_navlog_window = nullptr;
 };
 
 #endif
