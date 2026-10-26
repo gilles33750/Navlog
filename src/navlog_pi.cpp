@@ -5,12 +5,12 @@
 
 // Fonctions utilisées par OpenCPN pour créer et détruire le plugin.
 
-extern "C" DECL_EXP opencpn_plugin* create_pi(void* ppimgr)
+extern "C" __declspec(dllexport) opencpn_plugin* create_pi(void* ppimgr)
 {
     return new NavLogPi(ppimgr);
 }
 
-extern "C" DECL_EXP void destroy_pi(opencpn_plugin* plugin)
+extern "C" __declspec(dllexport) void destroy_pi(opencpn_plugin* plugin)
 {
     delete plugin;
 }
