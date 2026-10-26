@@ -40,9 +40,6 @@ NavLogPi::NavLogPi(void* ppimgr)
     dc.SelectObject(wxNullBitmap);
 }
 
-{
-}
-
 NavLogPi::~NavLogPi() = default;
 
 // Initialisation du plugin
@@ -71,7 +68,7 @@ int NavLogPi::Init()
 
 // Fermeture du plugin
 
-bool NavLogPi::bool NavLogPi::DeInit()
+bool NavLogPi::DeInit()
 {
     wxLogMessage("NavLog : fermeture");
 
@@ -91,17 +88,7 @@ bool NavLogPi::bool NavLogPi::DeInit()
 
     return true;
 }
-{
-    wxLogMessage("NavLog : fermeture");
 
-    if (m_toolbar_id != -1)
-    {
-        RemovePlugInTool(m_toolbar_id);
-        m_toolbar_id = -1;
-    }
-
-    return true;
-}
 
 // Version de l'API OpenCPN
 
@@ -169,11 +156,11 @@ wxString NavLogPi::GetLongDescription()
     return "Enregistrement des donnees de navigation NMEA 0183.";
 }
 
-// Barre d'outils : aucun bouton pour cette première version
+// Barre d'outils : un bouton NavLog
 
 int NavLogPi::GetToolbarToolCount()
 {
-    return 0;
+    return 1;
 }
 
 void NavLogPi::OnToolbarToolCallback(int id)
